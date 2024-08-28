@@ -66,6 +66,12 @@ add_executable(
 add_executable(
   run-stage2-tests
   stack-stage3.h
+  stage2-3-tests/sneaky-detect-large-buffer.h
+  stage2-3-tests/sneaky-detect-memory-leak.h
+  stage2-3-tests/sneaky-prevent-std-containers.h
+  stage2-3-tests/sneaky-prevent-std-copy.h
+  stage2-3-tests/sneaky-use-newdelete-ops.h
+  stage2-3-tests/sneaky-uses-dynamic-allocation.h
   stage2-3-tests/sneaky-prevent-std-containers.h
   stage2-3-tests/stage2-tests-string.cpp 
   stage2-3-tests/stage2-tests-other-types.cpp 
@@ -74,10 +80,12 @@ add_executable(
 add_executable(
   run-stage3-tests
   stack-stage3.h
-  stage2-3-tests/sneaky-use-newdelete-ops.h
-  stage2-3-tests/sneaky-uses-dynamic-allocation.h
   stage2-3-tests/sneaky-detect-large-buffer.h
   stage2-3-tests/sneaky-detect-memory-leak.h
+  stage2-3-tests/sneaky-prevent-std-containers.h
+  stage2-3-tests/sneaky-prevent-std-copy.h
+  stage2-3-tests/sneaky-use-newdelete-ops.h
+  stage2-3-tests/sneaky-uses-dynamic-allocation.h
   stage2-3-tests/stage2-tests-string.cpp 
   stage2-3-tests/stage2-tests-other-types.cpp 
   stage2-3-tests/stage3-tests.cpp
