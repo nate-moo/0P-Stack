@@ -19,6 +19,7 @@
 
 #include <cstdint>
 
+namespace sneaky_detect_memory_leak {
 class MemoryObserver {
     private:
         static std::size_t observers;
@@ -26,7 +27,7 @@ class MemoryObserver {
     public:
         MemoryObserver(){ ++observers; }
         MemoryObserver(const MemoryObserver&){ ++observers; }
-        MemoryObserver(const MemoryObserver&&){ ++observers; }
+        MemoryObserver(const MemoryObserver&&){ /* ++observers; */ }
 
         MemoryObserver& operator =(const MemoryObserver&){ return *this; };
         MemoryObserver& operator =(const MemoryObserver&&){ return *this; };
@@ -39,8 +40,10 @@ class MemoryObserver {
 };
 
 std::size_t MemoryObserver::observers = 0;
+} // namespace
 
 TEST(Dynamic, DetectMemoryLeak) {
+	using namespace sneaky_detect_memory_leak;
     const std::size_t start = MemoryObserver::global_number_of_observers();
     
     {

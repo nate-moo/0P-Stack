@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <cstdint>
 
+namespace sneaky_detect_large_buffer {
 class MaxMemoryObserver {
     private:
         static std::size_t observers;
@@ -40,8 +41,11 @@ class MaxMemoryObserver {
 std::size_t MaxMemoryObserver::observers = 0;
 std::size_t MaxMemoryObserver::maximum = 0;
 
+} // namespace
+
 
 TEST(Dynamic, DetectLargeBuffer) {
+	using namespace sneaky_detect_large_buffer;
     // create stack with specialized type to trigger detection
     stack<MaxMemoryObserver> stack;
 

@@ -7,7 +7,7 @@
 #ifndef TSTACK_USE_NEWDELETE_OPS_H
 #define TSTACK_USE_NEWDELETE_OPS_H
 
-
+namespace sneaky_use_newdelete_ops {
 // class-specific allocation functions --- lifted from cppreference.com
 struct use_newdelete_t {
     static void* operator new(std::size_t count)
@@ -58,7 +58,11 @@ size_t use_newdelete_t::non_array_calls;
 size_t use_newdelete_t::last_allocation_size;
 double use_newdelete_t::max_growth_factor;
 
+} // namespace
+
+
 TEST(ProjectRequirements, UsesNewDeleteOps) {
+	using namespace sneaky_use_newdelete_ops;
 	const size_t calls[] = {2,4,7,12,14,21};
 
 	for( size_t c=0; c<sizeof(calls)/sizeof(size_t); ++c ) {
@@ -80,6 +84,7 @@ TEST(ProjectRequirements, UsesNewDeleteOps) {
 
 
 TEST(ProjectRequirements, DontUseMoreThan32AsYourBaseCapacity) {
+	using namespace sneaky_use_newdelete_ops;
 	/***
 	 * "base capacity" is the size of array allocated in your default
 	 * constructor
@@ -99,6 +104,7 @@ TEST(ProjectRequirements, DontUseMoreThan32AsYourBaseCapacity) {
 
 
 TEST(ProjectRequirements, DeletesShouldBeOneLessThanNews ) {
+	using namespace sneaky_use_newdelete_ops;
 	/***
 	 * If you are getting tripped up by this test then you have memory
 	 * management issues in your stack expansion logic (or you've implemented
