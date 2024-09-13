@@ -10,6 +10,8 @@
 
 #include "stack-stage3.h"
 
+#include "../stage2-3-tests/header-sans-using-namespace.h"   // make sure headers don't have  using namespace std
+														   
 // Dynamic tests - these are intended to test a stack
 // using a dynamically allocated array with resizing
 #include "stage2-3-tests/sneaky-prevent-std-containers.h" // dissuade students from using standard containers

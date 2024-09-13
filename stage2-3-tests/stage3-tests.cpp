@@ -12,6 +12,8 @@
 #include "stack-stage3.h"
 
 
+/** stage2-tests-string.cpp, linked into stage3-tests exec, has the header-sans-using-namespace.h inclusion */
+															 
 #include "stage2-3-tests/sneaky-detect-large-buffer.h"     // ensure super large buffers are not being used
 														   
 #include "stage2-3-tests/sneaky-uses-dynamic-allocation.h" // ensure dynamic allocation

@@ -59,6 +59,7 @@ add_executable(
   run-stage1-tests
   stack-stage1.h
   stack-stage1.cpp
+  stage1-tests/header-sans-using-namespace.h
   stage1-tests/earlywarning-uses-dynamic-allocation.h
   stage1-tests/stage1-tests.cpp
   )
@@ -66,6 +67,7 @@ add_executable(
 add_executable(
   run-stage2-tests
   stack-stage3.h
+  stage2-3-tests/header-sans-using-namespace.h
   stage2-3-tests/sneaky-detect-large-buffer.h
   stage2-3-tests/sneaky-detect-memory-leak.h
   stage2-3-tests/sneaky-prevent-std-containers.h
@@ -79,6 +81,7 @@ add_executable(
 add_executable(
   run-stage3-tests
   stack-stage3.h
+  stage2-3-tests/header-sans-using-namespace.h
   stage2-3-tests/sneaky-detect-large-buffer.h
   stage2-3-tests/sneaky-detect-memory-leak.h
   stage2-3-tests/sneaky-prevent-std-containers.h

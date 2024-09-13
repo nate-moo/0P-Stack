@@ -10,6 +10,9 @@
 #include "gtest/gtest.h"
 #include "stack-stage1.h"
 
+#include "../stage1-tests/header-sans-using-namespace.h"   // make sure headers don't have  using namespace std
+#include "../stage1-tests/earlywarning-uses-dynamic-allocation.h"  // ensure dynamic allocation
+
 using namespace std;
 
 // Basic tests - should work with a stack 
@@ -299,6 +302,4 @@ TEST(Dynamic, ExtremelyLarge) {
     ASSERT_EQ(stk.size(), 0);
     ASSERT_TRUE(stk.is_empty());
 }
-
-#include "../stage1-tests/earlywarning-uses-dynamic-allocation.h"  // ensure dynamic allocation
 
