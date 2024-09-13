@@ -8,6 +8,8 @@
 
 #include "stack-stage1.h"
 
+using namespace std;
+
 string stack::top() {
     return "Hello";
 }
