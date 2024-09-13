@@ -21,14 +21,18 @@
 #include <cstddef> // for size_t
 #include <string>  // for stage 1
 
-using namespace std;
+/***
+ * DO NOT put unscoped 'using namespace std;' in header files!
+ * Instead use the std:: prefix where required in class definitions, as
+ * demonstrated below.
+ */
 
 class stack {
   public:
-    string top(); // non-inline, implemented in stack-stage1.cpp
+    std::string top(); // non-inline, implemented in stack-stage1.cpp
 
     // inline definitions, doing nothing at the moment
-    void push(const string &) { return; }
+    void push(const std::string &) { return; }
     void pop() { return; }
     size_t size() { return 0; }
     bool is_empty() { return true; }
@@ -36,7 +40,7 @@ class stack {
     stack() { ; }
 
   private:
-    string _data[4];
+	std::string _data[4];
 };
 
 #endif

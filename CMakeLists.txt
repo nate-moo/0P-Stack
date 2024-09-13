@@ -59,7 +59,7 @@ add_executable(
   run-stage1-tests
   stack-stage1.h
   stack-stage1.cpp
-  stage1-tests/sneaky-uses-dynamic-allocation.h
+  stage1-tests/earlywarning-uses-dynamic-allocation.h
   stage1-tests/stage1-tests.cpp
   )
 
@@ -69,10 +69,9 @@ add_executable(
   stage2-3-tests/sneaky-detect-large-buffer.h
   stage2-3-tests/sneaky-detect-memory-leak.h
   stage2-3-tests/sneaky-prevent-std-containers.h
-  stage2-3-tests/sneaky-prevent-std-copy.h
+  stage2-3-tests/sneaky-project-requirements.h
   stage2-3-tests/sneaky-use-newdelete-ops.h
   stage2-3-tests/sneaky-uses-dynamic-allocation.h
-  stage2-3-tests/sneaky-prevent-std-containers.h
   stage2-3-tests/stage2-tests-string.cpp 
   stage2-3-tests/stage2-tests-other-types.cpp 
   )
@@ -83,7 +82,7 @@ add_executable(
   stage2-3-tests/sneaky-detect-large-buffer.h
   stage2-3-tests/sneaky-detect-memory-leak.h
   stage2-3-tests/sneaky-prevent-std-containers.h
-  stage2-3-tests/sneaky-prevent-std-copy.h
+  stage2-3-tests/sneaky-project-requirements.h
   stage2-3-tests/sneaky-use-newdelete-ops.h
   stage2-3-tests/sneaky-uses-dynamic-allocation.h
   stage2-3-tests/stage2-tests-string.cpp 
@@ -99,9 +98,11 @@ target_link_libraries(
   run-stage2-tests GTest::gtest_main
 )
 
-target_link_libraries(
-  run-stage3-tests GTest::gtest_main
-)
+if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+target_link_libraries(run-stage3-tests GTest::gtest_main kvm procstat )
+else()
+target_link_libraries(run-stage3-tests GTest::gtest_main)
+endif()
 
 # some convenience targets
 add_custom_target(stage1)

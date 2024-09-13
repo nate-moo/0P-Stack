@@ -300,5 +300,5 @@ TEST(Dynamic, ExtremelyLarge) {
     ASSERT_TRUE(stk.is_empty());
 }
 
-#include "../stage1-tests/sneaky-uses-dynamic-allocation.h"  // ensure dynamic allocation
+#include "../stage1-tests/earlywarning-uses-dynamic-allocation.h"  // ensure dynamic allocation
 

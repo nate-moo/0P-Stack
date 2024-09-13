@@ -21,4 +21,11 @@
 // To start stage 2, you probably want to copy all of your code from
 // stack-stage1.h and stack-stage1.cpp in place of this comment.
 
+/***
+ * DO NOT put unscoped 'using namespace std;' in header files!
+ * Instead use the std:: prefix where required in class definitions, as
+ * demonstrated in the stack starter code for stage1.
+ */
+
+
 #endif

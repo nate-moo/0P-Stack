@@ -11,7 +11,6 @@
 #include "gtest/gtest.h"
 #include "stack-stage3.h"
 
-using namespace std;
 
 #include "stage2-3-tests/sneaky-detect-large-buffer.h"     // ensure super large buffers are not being used
 														   
@@ -19,8 +18,10 @@ using namespace std;
 														   
 #include "stage2-3-tests/sneaky-use-newdelete-ops.h"       // assure new[] and delete[] are being used
 														   
-#include "stage2-3-tests/sneaky-prevent-std-copy.h"        // assure std::{copy,copy_backward,reverse_copy} are not used
+#include "stage2-3-tests/sneaky-project-requirements.h"    
 													   
+using namespace std;
+
 // Copy constructor
 TEST(CopyConstructor, EmptyStack) {
     stack<string> stk1;

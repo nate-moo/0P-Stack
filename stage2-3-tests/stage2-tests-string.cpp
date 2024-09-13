@@ -7,7 +7,12 @@
 
 #include <string>
 #include "gtest/gtest.h"
+
 #include "stack-stage3.h"
+
+// Dynamic tests - these are intended to test a stack
+// using a dynamically allocated array with resizing
+#include "stage2-3-tests/sneaky-prevent-std-containers.h" // dissuade students from using standard containers
 
 using namespace std;
 
@@ -123,11 +128,6 @@ TEST(Basic, MixedOperations) {
     ASSERT_EQ(stk.size(), 0);
     ASSERT_TRUE(stk.is_empty());
 }
-
-// Dynamic tests - these are intended to test a stack
-// using a dynamically allocated array with resizing
-
-#include "stage2-3-tests/sneaky-prevent-std-containers.h" // dissuade students from using standard containers
 
 TEST(Dynamic, FourElements) {
     stack<string> stk;
