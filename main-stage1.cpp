@@ -15,6 +15,17 @@ using namespace std;
 
 int main() {
     // You can use this main() to run your own analysis or initial testing code.
-    cout << "If you are seeing this, you have successfully run main!" << endl;
+    stack stk;
+    stk.push("a");
+    stk.push("b");
+    stk.push("c");
+    cout << stk.top() << endl;
+//    ASSERT_EQ(stk.top(), "c");
+    stk.pop();
+    cout << stk.top() << endl;
+//    ASSERT_EQ(stk.top(), "b");
+    stk.pop();
+    cout << stk.top() << endl;
+//    ASSERT_EQ(stk.top(), "a");
     return 0;
 }

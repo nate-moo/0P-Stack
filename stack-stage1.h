@@ -12,7 +12,7 @@
  * on an empty stack results in undefined behavior (possibly crashing your
  * program)!
  *
- * Author: Your Name
+ * Author: Nate Moore
  */
 
 #ifndef _STACK_H
@@ -32,15 +32,18 @@ class stack {
     std::string top(); // non-inline, implemented in stack-stage1.cpp
 
     // inline definitions, doing nothing at the moment
-    void push(const std::string &) { return; }
-    void pop() { return; }
-    size_t size() { return 0; }
-    bool is_empty() { return true; }
+    void push(const std::string&);
+    void pop();
+    size_t size() const;
+    bool is_empty() const;
 
     stack() { ; }
 
   private:
-	std::string _data[4];
+	std::string* _data = new std::string[4];
+    size_t _capacity = 1;
+    size_t _size = 0;
+
 };
 
 #endif
