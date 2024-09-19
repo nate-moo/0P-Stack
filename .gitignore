@@ -13,3 +13,4 @@ bin
 lib
 run-*
 build
+*.zip

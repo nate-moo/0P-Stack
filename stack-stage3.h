@@ -39,20 +39,51 @@ public:
     bool is_empty() const;
 
     stack<T>() { ; }
+    stack<T>(stack&);
     ~stack<T>();
+    stack<T>& operator= (stack<T> const&);
 
 private:
-    T* _data = new T[4];
+    T* _data = new T[1];
     size_t _capacity = 1;
     size_t _size = 0;
 };
 
 template<class T>
-stack<T>::~stack<T>() {
-//    for (size_t i; i < _capacity; i++) {
-//        delete _data[i];
-//    }
+stack<T>& stack<T>::operator=(const stack<T> &oldStack) {
+    if (this == &oldStack) return *this;
 
+    _size = oldStack._size;
+    _capacity = oldStack._capacity * 2;
+
+    delete[] _data;
+    _data = new T[_capacity];
+
+    if (_size == 0) {return *this;}
+
+    for (size_t i = 0; i < _size; ++i) {
+        _data[i] = oldStack._data[i];
+    }
+
+    return *this;
+}
+
+template<class T>
+stack<T>::stack(stack &oldstack) {
+    if (oldstack.is_empty() == true) { return; }
+
+    _size = oldstack._size;
+    _capacity = oldstack._capacity * 2;
+
+    delete[] _data;
+    _data = new T[_capacity];
+    for (size_t i = 0; i < oldstack._size; i++) {
+        _data[i] = oldstack._data[i];
+    }
+}
+
+template<class T>
+stack<T>::~stack<T>() {
     delete[] _data;
 }
 
